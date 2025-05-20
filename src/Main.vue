@@ -9,7 +9,7 @@
 </script>
 
 <template> 
-  <main :style="{ color, bgc: backgroundColor }">
+  <main :style="{ color, backgroundColor: bgc  }">
     <div @click="change"> {{ text }} </div>
   </main>
 </template>
