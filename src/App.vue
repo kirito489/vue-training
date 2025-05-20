@@ -3,18 +3,20 @@
   import MainComp from './Main.vue'
   import { ref } from 'vue';
 
-  const text = ref('主要的網站內容');
-  const change = function() {
-    text.value = '新的網站內容'
+  const subtitle = ref('這是網站的副標題');
+  const updataSubtitle = function() {
+    subtitle.value = '這是新的副標題';
   };
 </script>
 
 <template> 
   <NavComp title='這是網站標題'></NavComp>
+  <div> {{ subtitle }} </div>
   <MainComp
-  color = 'white'
-  bgc = 'blue'>
-  </MainComp>
+    color = 'white'
+    bgc = 'blue'
+    @update = 'updataSubtitle'
+  ></MainComp>
 </template>
 
 <style scoped> 
