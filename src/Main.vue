@@ -6,13 +6,17 @@
     text.value = '新的網站內容'
   };
   defineProps(['color', 'bgc']);
-  const emit = defineEmits(['update'])
+  const emit = defineEmits(['update', 'update-1'])
+  const updateParentSubSubtitle = function() {
+    emit('update-1');
+  };
 </script>
 
 <template> 
   <main :style="{ color, backgroundColor: bgc  }">
     <div @click="change"> {{ text }} </div>
     <button @click="$emit('update')">改變副標題</button>
+    <button @click="updateParentSubSubtitle">改變副副標題</button>
   </main>
 </template>
 
