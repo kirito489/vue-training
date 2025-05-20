@@ -10,8 +10,11 @@
 </script>
 
 <template> 
-  <NavComp></NavComp>
-  <MainComp></MainComp>
+  <NavComp title='這是網站標題'></NavComp>
+  <MainComp
+  color = 'white'
+  bgc = 'blue'>
+  </MainComp>
 </template>
 
 <style scoped> 

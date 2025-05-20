@@ -5,10 +5,11 @@
   const change = function() {
     text.value = '新的網站內容'
   };
+  defineProps(['color', 'bgc'])
 </script>
 
 <template> 
-  <main>
+  <main :style="{ color, bgc: backgroundColor }">
     <div @click="change"> {{ text }} </div>
   </main>
 </template>
