@@ -1,9 +1,13 @@
 <script setup>
-  defineProps(['title'])
+  defineProps(['title', 'subtitle', 'subsubtitle'])
 </script>
 
 <template> 
-  <nav> {{ title }} </nav>
+  <nav>
+    <div> {{ title }} </div>
+    <div> {{ subtitle }} </div>
+    <div> {{ subsubtitle }} </div>
+  </nav>
 </template>
 
 <style scoped> 
