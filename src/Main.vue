@@ -1,33 +1,54 @@
 <script setup>
-  import { ref } from 'vue';
+  import { onMounted, onUpdated, onUnmounted, ref } from 'vue';
+
+  const counter = ref(0);
+  let scheduleId;
+  onMounted(function() {
+    console.log('組件掛載完成');
+    scheduleId = window.setInterval(function() {
+      console.log('每隔1秒鐘，數字的加1');
+      counter.value = counter.value + 1;
+    }, 1000);
+  });
+  onUpdated(function() {
+    console.log('組件更新完成');
+  });
+  onUnmounted(function() {
+    console.log('組件卸載完成');
+    window.clearInterval(scheduleId);
+  });
 
   const text = ref('主要的網站內容');
-  const change = function() {
-    text.value = '新的網站內容'
-  };
-  defineProps(['color', 'bgc']);
-  const emit = defineEmits(['update', 'update-1'])
-  const updateParentSubSubtitle = function() {
-    emit('update-1');
+  const changeText = function() {
+    text.value = text.value === '新的網站內容' ? '主要的網站內容' : '新的網站內容'
   };
 </script>
 
 <template> 
-  <main :style="{ color, backgroundColor: bgc  }">
-    <div @click="change"> {{ text }} </div>
-    <button @click="$emit('update')">改變副標題</button>
-    <button @click="updateParentSubSubtitle">改變副副標題</button>
+  <main>
+    <div> {{ counter }} </div>
+    <div> {{ text }} </div>
+    <button @click="changeText">改變文字內容</button>
   </main>
 </template>
 
 <style scoped> 
   main {
     padding: 10px;
+    background-color: aqua;
   }
 
   button {
     border: 1px solid black;
     background-color: aliceblue;
     color: black;
+  }
+
+  button:hover {
+    opacity: 0.7;
+  }
+
+  button:active {
+    opacity: 0.5;
   }
 </style>
