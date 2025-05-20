@@ -23,7 +23,6 @@
 <style scoped> 
   main {
     padding: 10px;
-    background-color: aquamarine;
   }
 
   button {
