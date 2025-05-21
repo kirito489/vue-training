@@ -14,15 +14,15 @@
 
 <style scoped> 
   .list {
-  line-height: 1.5rem;
-}
+    line-height: 1.5rem;
+  }
 
-.product {
-  padding: 15px 0;
-  border-bottom: 1px solid black;
-}
-
-.product .name {
-  font-weight: bold;
-}
+  .product {
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+  }
+  
+  .product .name {
+    font-weight: bold;
+  }
 </style> 

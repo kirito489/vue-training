@@ -1,28 +1,35 @@
 <script setup>
-  import { onMounted, ref } from 'vue';
-  import axios from 'axios';
-  import List from './List.vue';
+  import { ref } from 'vue';
+  import ProductsPage from './product/ProductsPage.vue';
+  import ReviewsPage from './review/ReviewPage.vue';
 
-  const products = ref(null);
-  const url = 'https://cwpeng.github.io/live-records-samples/data/products.json';
-  onMounted(async function() {
-    const resp = await axios.get(url);
-    console.log(resp);
-    const { data } = resp;
-    console.log(data);
-    products.value = data;
-  });
+  const page = ref('product')
+  const change = function(clickedPage) {
+    page.value = clickedPage
+  }
 </script>
 
-<template> 
-  <div class="headline">產品資料列表</div>
-  <div v-if="products === null">資料載入中</div>
-  <List :products="products || []" v-else></List>
+<template>
+  <nav>
+    <span :class="page === 'product' ? 'current' : ''" @click="change('product')">產品資料</span>
+    <span :class="page === 'review' ? 'current' : ''" @click="change('review')">評論訊息</span>
+  </nav>
+  <main>
+    <ProductsPage v-if="page === 'product'"></ProductsPage>
+    <ReviewsPage v-if="page === 'review'"></ReviewsPage>
+  </main>
 </template>
 
 <style scoped> 
-.headline {
-  font-size: 20px;
-  font-weight: bold;
-}
+  nav {
+    font-size: 20px;
+  }
+
+  nav span {
+    margin-right: 10px;
+  }
+
+  nav span.current {
+    font-weight: bold;
+  }
 </style> 
